@@ -297,71 +297,41 @@ body {
   transform: translateY(-2px);
 }
 
-.ht-stats {
-  background: var(--white);
-  padding: 70px 0;
-  border-bottom: 1px solid var(--border-solid);
+/* CARDS */
+:root {
+    --hb-actitud: #2C3333;
+    --hb-fortaleza: #395B64;
+    --hb-mentalidad: #A5C9CA;
+    --hb-atencion: #E7F6F2;
 }
 
-.stat-card {
-  background: var(--bg-light);
-  border: 1.5px solid var(--border-solid);
-  border-radius: 18px;
-  padding: 32px 28px;
-  text-align: left;
-  transition: all 0.35s ease;
-  opacity: 0;
-  transform: translateY(20px);
-}
-.stat-card.in-view {
-  opacity: 1;
-  transform: translateY(0);
-}
-.stat-card:hover {
-  transform: translateY(-6px);
-  border-color: var(--primary);
-  box-shadow: 0 16px 40px rgba(57,91,100,0.12);
+h2, h6 {
+    font-family: 'Fredoka', sans-serif;
+    letter-spacing: -0.5px;
 }
 
-.stat-icon {
-  width: 52px; height: 52px;
-  background: var(--primary);
-  border-radius: 14px;
-  display: flex; align-items: center; justify-content: center;
-  color: var(--bg-light);
-  font-size: 1.2rem;
-  margin-bottom: 18px;
-  box-shadow: 0 6px 16px rgba(57,91,100,0.25);
+.bg-hb-actitud { background-color: var(--hb-actitud) !important; }
+.bg-hb-fortaleza { background-color: var(--hb-fortaleza) !important; }
+
+.text-hb-mentalidad { color: var(--hb-mentalidad) !important; }
+.text-hb-atencion { color: var(--hb-atencion) !important; }
+
+.hover-effect {
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    border: 1px solid transparent;
 }
-.stat-num {
-  font-family: var(--ff-display);
-  font-size: 2.4rem;
-  font-weight: 700;
-  color: var(--primary);
-  line-height: 1;
-  margin-bottom: 6px;
+
+.hover-effect:hover {
+    border-color: var(--hb-mentalidad) !important;
+    transform: translateY(-5px);
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15) !important;
 }
-.stat-num span { font-size: 1.6rem; color: var(--accent); }
-.stat-desc {
-  font-family: var(--ff-body);
-  font-size: 0.85rem;
-  color: var(--primary);
-  opacity: 0.75;
-  margin-bottom: 16px;
-  line-height: 1.5;
+
+.tracking-wider {
+    letter-spacing: 0.1em;
 }
-.stat-bar {
-  height: 4px;
-  background: var(--border-solid);
-  border-radius: 4px;
-  overflow: hidden;
-}
-.stat-fill {
-  height: 100%;
-  background: var(--primary);
-  border-radius: 4px;
-  animation: growWidth 1.5s ease both;
-}
+
+
 @keyframes growWidth {
   from { width: 0 !important; }
 }
@@ -774,6 +744,74 @@ body {
   position: relative;
   overflow: hidden;
 }
+
+/* --- MISIÓN Y VISIÓN --- */
+
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Roboto:wght@300;400;500;700&display=swap');
+
+:root {
+    --hb-actitud: #2C3333;
+    --hb-fortaleza: #395B64;
+    --hb-mentalidad: #A5C9CA;
+    --hb-atencion: #E7F6F2;
+}
+
+h2, h3 {
+    font-family: 'Fredoka', sans-serif;
+    letter-spacing: -0.5px;
+}
+
+.bg-hb-actitud { background-color: var(--hb-actitud) !important; }
+.bg-hb-fortaleza { background-color: var(--hb-fortaleza) !important; }
+.text-hb-mentalidad { color: var(--hb-mentalidad) !important; }
+.text-hb-atencion { color: var(--hb-atencion) !important; }
+
+.tracking-wider {
+    letter-spacing: 0.1em;
+}
+
+/* --- ESTILOS INTERACTIVOS PARA MISIÓN Y VISIÓN --- */
+/* --- ESTILOS INTERACTIVOS PARA MISIÓN Y VISIÓN OPTIMIZADOS --- */
+.mv-interactive-card {
+    transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), 
+                box-shadow 0.4s ease, 
+                border-color 0.4s ease, 
+                background-color 0.3s ease;
+    cursor: pointer;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.mv-interactive-card .mv-hidden-content {
+    max-height: 0;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: max-height 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), 
+                opacity 0.3s ease, 
+                transform 0.3s ease;
+}
+
+.mv-interactive-card:hover {
+    transform: scale(1.03);
+    border-color: var(--hb-mentalidad) !important;
+    box-shadow: 0 1rem 2rem rgba(0,0,0,0.2) !important;
+    background-color: #2e4950 !important; 
+}
+
+.mv-interactive-card:hover .mv-hidden-content {
+    max-height: 200px; /* Reducido para acoplarse al tamaño de texto compacto */
+    opacity: 0.95;
+    transform: translateY(0);
+}
+
+.mv-interactive-card:hover .mv-initial-content svg,
+.mv-interactive-card:hover .mv-initial-content i {
+    transform: scale(1.08);
+    transition: transform 0.3s ease;
+}
+
 .cta-orb {
   position: absolute;
   border-radius: 50%;
@@ -824,105 +862,115 @@ body {
 }
 .btn-cta { min-width: 190px; justify-content: center; }
 
+/* DESARROLADORES */
+.team-section { 
+  background: var(--hb-actitud); 
+  padding: 6rem 0; 
+}
+
+.team-section {
+  font-family: 'Graduate', serif !important;
+}
+.section-title{
+    font-family: 'Fredoka', serif !important;
+}
+
+.team-card {
+  background: #395B64;
+  border: 1px solid rgba(165,201,202,.15);
+  border-radius: 16px;
+  padding: 2rem 1rem; /* Ajustado para mejor proporción de los textos */
+  text-align: center;
+  transition: all .3s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; 
+  align-items: center;
+}
+
+/* Solución al bug de transparencia de la tarjeta 4 en hover */
+.team-card:hover {
+  background: #416a74; 
+  border-color: rgba(165, 201, 202, .4);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,.2);
+}
+
+.team-avatar {
+  width: 90px;      
+  height: 90px;
+  border-radius: 50%;
+  margin-bottom: 1.2rem;
+  border: 3px solid #ffffff; /* Borde blanco limpio como la captura */
+  overflow: hidden; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--primary-dark); 
+}
+
+.team-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; 
+}
+
+.team-name {
+  font-family: 'Graduate', serif !important;
+  font-size: 0.85rem; /* Ajustado para que nombres largos no se rompan feo */
+  font-weight: 700;
+  color: #ffffff; 
+  text-transform: uppercase; /* Fuerza las mayúsculas de la imagen */
+  letter-spacing: 0.5px;    /* Espaciado elegante */
+  margin-top: 0.5rem;
+}
+
 
 /* ──────────────────────────────────────────
    8. FOOTER
 ────────────────────────────────────────── */
-.ht-footer {
-  background: var(--white);
-  border-top: 1.5px solid var(--border-solid);
-  padding: 70px 0 32px;
+
+/* Efecto suave para los botones SVG de redes sociales */
+footer .social-btn {
+    transition: transform 0.3s ease, filter 0.3s ease;
+    display: inline-block;
 }
 
-.footer-brand {
-  font-family: var(--ff-display);
-  font-size: 1.4rem;
-  color: var(--primary);
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 14px;
-}
-.brand-icon-sm {
-  width: 32px; height: 32px;
-  border-radius: 8px;
-  display: flex; align-items: center; justify-content: center;
-  color: var(--bg-light);
-  font-size: 0.8rem;
-}
-.footer-desc {
-  font-family: var(--ff-body);
-  font-size: 0.88rem;
-  color: var(--primary);
-  opacity: 0.7;
-  max-width: 260px;
-  line-height: 1.65;
-  margin-bottom: 24px;
+footer .social-btn:hover {
+    transform: scale(1.15);
+    filter: brightness(1.1); 
 }
 
-.footer-socials {
-  display: flex;
-  gap: 10px;
-}
-.footer-socials a {
-  width: 36px; height: 36px;
-  border-radius: 10px;
-  border: 1.5px solid var(--border-solid);
-  display: flex; align-items: center; justify-content: center;
-  color: var(--primary);
-  font-size: 0.88rem;
-  text-decoration: none;
-  transition: all 0.25s;
-}
-.footer-socials a:hover {
-  background: var(--primary);
-  color: var(--bg-light);
-  border-color: var(--primary);
-  transform: translateY(-2px);
+.hover-link {
+    transition: all 0.2s ease-in-out;
 }
 
-.footer-col-title {
-  font-family: var(--ff-label);
-  font-size: 0.65rem;
-  letter-spacing: 2px;
-  color: var(--primary-dark);
-  text-transform: uppercase;
-  display: block;
-  margin-bottom: 18px;
+.hover-link:hover {
+    color: #A5C9CA !important;
+    padding-left: 6px; 
 }
 
-.footer-links {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+.img-producto {
+    height: 350px;
+    object-fit: cover;
+    border-radius: 10px;
 }
-.footer-links a {
-  font-family: var(--ff-body);
-  font-size: 0.88rem;
-  color: var(--primary);
-  text-decoration: none;
-  opacity: 0.75;
-  transition: all 0.2s;
-}
-.footer-links a:hover { opacity: 1; padding-left: 4px; }
 
-.footer-hr {
-  border-color: var(--border-solid);
-  margin: 48px 0 24px;
-  opacity: 1;
+@media (max-width: 768px) {
+    .img-producto {
+        height: 250px;
+    }
 }
-.footer-bottom {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-family: var(--ff-body);
-  font-size: 0.8rem;
-  color: var(--primary);
-  opacity: 0.6;
-  flex-wrap: wrap;
-  gap: 10px;
+
+@media (max-width: 576px) {
+    .img-producto {
+        height: 180px;
+    }
+    .card-title {
+        font-size: 18px;
+    }
+    .card-text {
+        font-size: 14px;
+    }
 }
